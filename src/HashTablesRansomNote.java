@@ -14,17 +14,26 @@ public class HashTablesRansomNote {
             System.out.println("No");
             return;
         }
+        HashMap<String, Integer> magazine = new HashMap<String, Integer>();
 
-        HashMap<Integer, String> magazine = new HashMap<Integer, String>();
-
-        for(int i=0; i < m; i++){
-            magazine.put(i, in.next());
+        for(int i=0; i <m; i++){
+            String val = in.next();
+            if (magazine.containsKey(val)){
+                magazine.put(val, magazine.get(val) + 1);
+            }
+            else{
+                magazine.put(val, 1);
+            }
         }
 
         while (in.hasNext()){
-            if (!magazine.containsValue(in.next())){
+            String val = in.next();
+            if (!magazine.containsKey(val) || magazine.get(val) == 0){
                 System.out.println("No");
                 return;
+            }
+            else {
+                magazine.put(val, magazine.get(val) - 1);
             }
         }
 
