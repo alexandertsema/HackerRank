@@ -1,35 +1,33 @@
-//import java.util.Arrays;
-//
-///**
-// * Created by Alex on 2/26/2017.
-// */
-//public class BinarySearchIceCreamParlor {
-//    public BinarySearchIceCreamParlor() {
-//    }
-//
-//    public void findIterative(E value) {
-//        // Initial values
-//        int left = 0;
-//        int right = array.length - 1;
-//        int index = -1;
-//
-//        // While there is a section having length > 0 to search
-//        while(left <= right && index < 0) {
-//            int mid = left + ((right - left) / 2);
-//
-//            // If value is found
-//            if(array[mid] == value) {
-//                index = mid;
-//                break;
-//            }
-//            // If value < array[mid], search left
-//            else if(value.compareTo(array[mid]) < 0) {
-//                // search left
-//                right = mid - 1;
-//            }
-//            else { // If value > array[mid], search right
-//                left = mid + 1;
-//            }
-//        }
-//    }
-//}
+import java.util.Arrays;
+import java.util.Scanner;
+
+/**
+ * Created by Alex on 2/26/2017.
+ */
+public class BinarySearchIceCreamParlor {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            int pool = in.nextInt();
+            int n = in.nextInt();
+            int flavors[] = new int[n];
+
+            for(int a_i=0; a_i < n; a_i++){
+                flavors[a_i] = in.nextInt();
+            }
+
+            first:
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    if (flavors[i] + flavors[j] == pool) {
+                        i++;
+                        j++;
+                        System.out.println(String.format(j > i? "%1$d %2$d" : "%2$d %1$d", i, j));
+                        break first;
+                    }
+                }
+            }
+        }
+    }
+}
